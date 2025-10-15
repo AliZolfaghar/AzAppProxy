@@ -12,6 +12,12 @@
       "email": "tester@tester.com",
       "password": "$2b$10$//pjDcYnWykzSCkP8p0pgO0GjKiN3uD1IaougAmgezss27HvNmLtq",
       "name": "tester"
+    },
+    {
+      "id": "999cbbb0-a30b-47e3-a8d0-3724d56c28ba",
+      "email": "1",
+      "password": "$2b$10$jtPxjJcX4UrEh3kql7kx3.TBhhfgsyNPQk8GSEpNA3QkNOwY.w7ie",
+      "name": "1"
     }
   ],
   "proxies": [],
