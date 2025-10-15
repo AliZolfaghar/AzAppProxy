@@ -5,7 +5,7 @@
 <div class="d-xl-none">LG</div>
 --}}
 
-<form id="loginForm" method="POST" action="/admin/login">
+<form id="loginForm" method="POST" action="/login">
     <div class="row justify-content-center">
         <div class="col-sm-7 col-md-6 col-lg-5 col-xl-4">
             <div class="card animated fadeIn faster">
@@ -18,14 +18,20 @@
 
                         <div class="col-md-12 mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="{{ email }}">
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                         </div>
-
+                        {{#if error}}
+                        <div class="col-md-12 mb-3">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                        {{/if}}
                         <div class="col-md-12 mb-3">
                             <button type="submit" class="btn btn-primary btn-raised ripple" id="login">Login</button>
                         </div>

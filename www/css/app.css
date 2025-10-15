@@ -29,6 +29,10 @@ body{
   text-align: left;
 }
 
+.w-1{
+  width: 1%;
+}
+
 .w-100px {
   width: 100px;
 }

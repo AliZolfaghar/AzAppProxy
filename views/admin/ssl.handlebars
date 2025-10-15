@@ -1,0 +1,52 @@
+ssl manager
+
+list of ssl files in ./ssl folder
+{{json sslFiles}}
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <div class="card shadow ">
+            <div class="card-header display-5 bg-primary text-white text-capitalize">
+                available SSL cetificates
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <td> file name </td>
+                            <td class="w-1"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each sslFiles}}
+                            <tr>
+                                <td> {{this}} </td>
+                                <td>
+                                    <a href="#/delete/{{this}}" class="btn btn-raised ripple btn-danger">
+                                       <i class="fa fa-regular  fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <div class="card shadow ">
+            <div class="card-header display-5 bg-primary text-white text-capitilize">
+                upload new SSL
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+
+</div>

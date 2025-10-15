@@ -29,10 +29,14 @@
   },
   "dependencies": {
     "@jchip/redbird": "^1.4.1",
+    "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
+    "crypto": "^1.0.1",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.2",
+    "jsonwebtoken": "^9.0.2",
     "lowdb": "^7.0.1",
+    "node-cache": "^5.1.2",
     "uuid": "^13.0.0"
   }
 }

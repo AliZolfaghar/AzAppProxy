@@ -1,0 +1,26 @@
+<h4>Manage Users</h4>
+<hr>
+
+{{!-- loop in users and show users in a table --}}
+<table class="table table-striped table-hover table-bordered shadow animated fadeIn faster">
+    <thead>
+        <tr class="bg-primary text-white">
+            <td>Name</td>
+            <td>Email</td>
+            <td class="w-1">
+                <a href="/admin/users/add" class="btn btn-block btn-success btn-raised ripple">Add User</a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users }} 
+            <tr>
+                <td> {{ this.name}} </td>
+                <td> {{ this.email}} </td>
+                <td>
+                    <a href="/admin/users/edit/{{this.id}}" class="btn btn-block btn-primary btn-raised ripple">Edit</a>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

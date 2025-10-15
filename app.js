@@ -4,7 +4,7 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import db from './db.js'; 
-// import handlebarHelpers from './shared/handlebarHelpers.js';
+import jwt from 'jsonwebtoken';
 
 const  app = express();
 app.use(express.json());
@@ -18,27 +18,72 @@ app.use(express.static("./www")); // server files in /www as static html files
 // setup handlebars 
 app.engine('handlebars', engine({    
     // defaultLayout: 'main' , 
-    // helpers : handlebarHelpers
+    helpers : {        
+        ifequal : ( a , b , options ) => {
+            if (a == b) {
+                return options.fn(this);  // Correct usage
+            } else {
+                return options.inverse(this);  // Handles the `{{else}}` block
+            }        
+        },
+        ifnotequal : ( a , b , options ) => {
+            if (a != b) {
+                return options.fn(this);  // Correct usage
+            } else {
+                return options.inverse(this);  // Handles the `{{else}}` block
+            }        
+        },
+        json : (obj) => {
+            try {            
+                return JSON.stringify(obj);
+            } catch (error) {
+                return error.message; 
+            }
+        },
+
+    }
 }));
 
 
 
 // set res.locals , 
 // res.locals objects will automatically pass to handlebars 
-// and accessable in handlebars with object names without res.locals ( ex : res.locals.user => user )
+// and accessable in handlebars with object names without res.locals ( ex : res.locals.currentUser => user )
 app.use((req, res, next) => {
-    // check to is any user exists in database or not 
+    // check to is any user exists in database or not  
     const {users} = db.data ; 
     if(users.length == 0 && req.path !== '/setup'){ 
-        return res.redirect('/setup');
+        return res.redirect('/setup'); // go to setup page to create user and jwt_secret 
     }
 
-
+    // get loginToken from cookie 
+    let loginToken = null ; 
+    if(req.cookies.loginToken){
+        loginToken = req.cookies.loginToken;
+    }
+    // validate token with jwt
+    if(loginToken){
+        let user = null ; 
+        try{
+            user = jwt.verify(loginToken , db.data.jwt_secret);
+        }catch(e){
+            console.log(e);
+        }
+        // put user in res.locals 
+        if(user){
+            res.locals.currentUser = user; // put user in res.locals to check in routes (via checkLogin middleware)
+        }
+    }
+ 
+    // log requests to console 
     console.log(`PROCESS : [${req.ip}] [${req.method}] ${req.url}`);
+
     if(req.path.startsWith('/admin')) res.locals.showAdminMenu = true ; // set showAdminMenu = true to render admin menu in handlbars 
+    
     res.locals.path = req.originalUrl;
     res.locals.test = 'this is a test value in res.locals '; // 
     res.locals.version = 1// config.VERSION;        
+    
     next();
 });
 
@@ -63,7 +108,8 @@ const loadApiRoutesAndStart = async () => {
     // trap 404 errors
     app.use((req, res) => {
         // res.status(404).send({ error: "route not found", detail: `${req.url} not found` });
-        res.redirect('/notfound')
+        // res.redirect('/notfound')
+        res.render('notfound')
     })
     
     // listen to requests via express-app

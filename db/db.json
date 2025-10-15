@@ -1,28 +1,19 @@
 {
-  "posts": [
-    {
-      "title": "foo",
-      "body": "bar"
-    },
-    {
-      "title": "foo",
-      "body": "bar"
-    },
-    {
-      "title": "foo",
-      "body": "bar"
-    },
-    {
-      "id": "6f2f55f6-9cd7-4877-9ac4-832a5732cc16",
-      "title": "foo",
-      "body": "bar"
-    }
-  ],
+  "posts": [],
   "users": [
     {
+      "id": "2a2c5d10-c75d-4c2c-9ac5-7f27a38c02d4",
       "email": "azolfaghar@gmail.com",
-      "password": "1234"
+      "password": "$2b$10$LSCLZLqqKbimlcR8n1olheE5S3polVX2KWhxIQ0R2pEYS.E9w9YzW",
+      "name": "Ali Zolfaghar"
+    },
+    {
+      "id": "87c781ed-bb13-4e9a-8eac-73d27c69c5c2",
+      "email": "tester@tester.com",
+      "password": "$2b$10$//pjDcYnWykzSCkP8p0pgO0GjKiN3uD1IaougAmgezss27HvNmLtq",
+      "name": "tester"
     }
   ],
-  "proxies": []
+  "proxies": [],
+  "jwt_secret": "c809706b4c4e43b12954ee212ff1c4d5e190f626"
 }

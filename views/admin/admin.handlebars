@@ -4,9 +4,11 @@ admin
 
 </h1>
 
+{{ secret }}
+<hr>
 {{ users.length }}
 
 {{!-- loop in users and show usernames --}}
 {{#each users}} 
-    <p> {{this.email}} </p>
+    <p> {{ this.name}} : {{this.email}} </p>
 {{/each}}

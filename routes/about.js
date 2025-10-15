@@ -1,8 +1,8 @@
 import { Router } from "express";
 const router = Router();
 
-router.get('/notfound' , (req , res ) => {
-    res.render('notfound')
+router.get('/about' , (req , res ) => {
+    res.render('about')
 })
 
 export default router;

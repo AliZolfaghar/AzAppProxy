@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <!-- <a class="navbar-brand" href="/" use:link> -->
+    <!-- <a class="navbar-brand" href="/" > -->
     <a class="navbar-brand" href="/" >
         <img
             alt="Logo"
@@ -25,46 +25,67 @@
     <!--  -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            {{#if currentUser}}
             <li class="nav-item">
-                <a class="nav-link" href="/home" use:link use:active>home</a>
+                <a class="nav-link" href="/" >Home</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/about" use:link use:active>about</a>
+                <a class="nav-link" href="/admin/ssl" >SSL</a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/proxies" >Proxies</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/users" >Users</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/help" >Help</a>
+            </li>
+
+            {{/if}}
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/about" >about</a>
+            </li>
+
+            {{#unless currentUser}}
+            <li class="nav-item">
+                <a class="nav-link" href="/login" >Login</a>
+            </li>
+            {{/unless}}
             <!-- <li class="nav-item">
-                <a class="nav-link" href="/posts" use:link use:active>posts</a>
+                <a class="nav-link" href="/menu" >Menu</a>
             </li> -->
 
             <!-- <li class="nav-item">
-                <a class="nav-link" href="/menu" use:link use:active>Menu</a>
+                <a class="nav-link" href="/user/setting" >user</a>
             </li> -->
 
             <!-- <li class="nav-item">
-                <a class="nav-link" href="/user/setting" use:link use:active>user</a>
+                <a class="nav-link" href="/counter" >counter</a>
             </li> -->
 
             <!-- <li class="nav-item">
-                <a class="nav-link" href="/counter" use:link use:active>counter</a>
+                <a class="nav-link " href="/admin/menu" > menu manager </a>
             </li> -->
 
             <!-- <li class="nav-item">
-                <a class="nav-link " href="/admin/menu" use:link> menu manager </a>
-            </li> -->
-
-            <!-- <li class="nav-item">
-                <a class="nav-link " href="/admin/users" use:link> user manager </a>
+                <a class="nav-link " href="/admin/users" > user manager </a>
             </li> -->
 
 
            <!-- <li class="nav-item">
-                <a class="nav-link disabled" href="/foobar" use:link> ... </a>
+                <a class="nav-link disabled" href="/foobar" > ... </a>
             </li> -->
 
+                {{#if currentUser }}
             
                 <ul class="navbar-nav" id="currentUserMenu">
-                    <li class="nav-item dropdown rtl">
+                    <li class="nav-item dropdown ">
                         <a
                             class="nav-link dropdown-toggle"
                             href="/#"
@@ -74,24 +95,25 @@
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            &nbsp; {$userStore.display_name} &nbsp;
+                            &nbsp; {{currentUser.name}} &nbsp;
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-right" href="/user/setting" use:link> Settings </a>
+                            <a class="dropdown-item " href="/admin/profile" > Profile </a>
 
-                            <div>
-                                <a class="dropdown-item text-right" href="/manage/cats" use:link>page 2</a>
-                                <a class="dropdown-item" href="/manage/depts" use:link>page 3</a>
-                                <a class="dropdown-item" href="/manage/users" use:link>page 4</a>
-                                <a class="dropdown-item" href="/" use:link>Another action</a>
-                            </div>
+                            {{!-- <div>
+                                <a class="dropdown-item " href="/manage/cats" >page 2</a>
+                                <a class="dropdown-item" href="/manage/depts" >page 3</a>
+                                <a class="dropdown-item" href="/manage/users" >page 4</a>
+                                <a class="dropdown-item" href="/" >Another action</a>
+                            </div> --}}
 
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#/logout" use:link>Logout</a>
+                            <a class="dropdown-item" href="/logout" >Logout</a>
                         </div>
                     </li>
                 </ul>
             
+                {{/if}}
         </ul>
 
         <form class="form-inline my-2 my-lg-0 d-none">

@@ -1,4 +1,4 @@
-import app from './expressapp.js';
+import app from './app.js';
 import Redbird from "@jchip/redbird";
 import fs from 'fs';
 

@@ -1,0 +1,70 @@
+{{!-- add / edit user  --}}
+{{!-- {{json user}} --}}
+{{!-- create a from to add or edit user  --}}
+<form method="POST" action="/admin/users/{{mode}}/{{user.id}}">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow animated fadeIn faster">
+                <div class="card-header bg-primary text-white">
+                    <span class="card-title text-capitalize display-5">
+                        {{ mode }} User
+                        </span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-md-12 mb-3">
+                            <label>Name :</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="{{ user.name }}">
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Email :</label>
+                            {{#ifequal mode 'add' }}
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email" >
+                            {{/ifequal}}
+                            <div class="form-control disabled">
+                                {{user.email}}  
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Password :</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                        </div>
+        
+                        {{#if error}}
+                        <div class="col-md-12 mb-3">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        <div class="col-md-12 mb-3">
+                            {{#if add }}
+                            <button type="submit" class="btn btn-primary btn-raised ripple w-100px" id="login">Save</button>
+                            {{/if}}
+
+                            {{#if edit }}
+                            <button type="submit" class="btn btn-primary btn-raised ripple w-100px" id="login">Update</button>
+                            <a href="/admin/users/delete/{{user.id}}" class="btn btn-danger btn-raised ripple w-100px float-right">delete</a>
+                            {{/if}}
+
+                            <a href="/admin/users" class="btn btn-secondary btn-raised ripple w-100px">Cancel</a>
+
+                            {{#if delete }}
+                            <button type="submit" class="btn btn-danger btn-raised ripple w-150px float-right">Confirm Delete</button>
+                            {{/if}}
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
