@@ -1,0 +1,12 @@
+<h1>
+
+admin
+
+</h1>
+
+{{ users.length }}
+
+{{!-- loop in users and show usernames --}}
+{{#each users}} 
+    <p> {{this.email}} </p>
+{{/each}}

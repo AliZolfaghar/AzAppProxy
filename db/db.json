@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "title": "foo",
+      "body": "bar"
+    },
+    {
+      "title": "foo",
+      "body": "bar"
+    },
+    {
+      "title": "foo",
+      "body": "bar"
+    },
+    {
+      "id": "6f2f55f6-9cd7-4877-9ac4-832a5732cc16",
+      "title": "foo",
+      "body": "bar"
+    }
+  ],
+  "users": [
+    {
+      "email": "azolfaghar@gmail.com",
+      "password": "1234"
+    }
+  ],
+  "proxies": []
+}

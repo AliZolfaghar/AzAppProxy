@@ -1,0 +1,40 @@
+{{!-- 
+<div class="d-sm-none d-sm-">XS</div>
+<div class="d-md-none">SM</div>
+<div class="d-lg-none">MD</div>
+<div class="d-xl-none">LG</div>
+--}}
+
+<form id="loginForm" method="POST" action="/admin/login">
+    <div class="row justify-content-center">
+        <div class="col-sm-7 col-md-6 col-lg-5 col-xl-4">
+            <div class="card animated fadeIn faster">
+                <div class="card-header bg-primary text-white display-5">
+                    Login
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-md-12 mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <button type="submit" class="btn btn-primary btn-raised ripple" id="login">Login</button>
+                        </div>
+
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

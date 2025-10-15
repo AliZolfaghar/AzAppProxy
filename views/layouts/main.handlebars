@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZAppProxy</title>
+    <!-- Favicon  -->
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- Style CSS -->
+    {{!--<link rel="stylesheet" href="/css/fa.all.min.css"> --}}
+    <link href="/css/bootstrap-material-design.min.css" rel="stylesheet">
+    <link href="/css/fontawesome.min.css" rel="stylesheet">    
+    <link href="/css/animate.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/app.css">
+
+    <script src="/js/jquery-3.7.1.min.js" ></script>
+    <script src="/js/popper.js" ></script>
+    <script src="/js/clipboard.min.js" ></script>
+    {{!-- <script src="/js/alpinejs.persist.min.js" defer></script> --}}
+    {{!-- <script src="/js/alpinejs.min.js" defer></script> --}}
+
+</head>
+
+<body>
+    {{> header }}    
+    {{!-- Main content --}}
+    <div id="main-content" class="p-3 ltr">
+        <div class="container-fluid ltr">
+            {{{body}}}
+        </div>
+    </div>
+
+    <script src="/js/bootstrap-material-design.js"></script>
+</body>
+</html>

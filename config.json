@@ -1,0 +1,153 @@
+{
+    "sites" : [
+        {"public":"st.ipo.ir" , "local":"http://192.168.4.70:81" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo.ir.key.pem",
+                    "cert" : "./ssl/ipo.ir.cert.pem",
+                    "ca"   : ""
+                }
+            }
+        },
+
+        {"public":"talar.ipo.ir" , "local":"http://127.0.0.1:82" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo.ir.key.pem",
+                    "cert" : "./ssl/ipo.ir.cert.pem",
+                    "ca"   : ""
+                }
+            }
+        },
+
+        {"public":"talar.ipo.org" , "local":"http://127.0.0.1:82" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo_org.key",
+                    "cert" : "./ssl/ipo_org.crt",
+                    "ca"   : "./ssl/CACert.crt"
+                }
+            }
+        } , 
+
+        {"public":"it.ipo.org" , "local":"http://192.168.0.103:8080" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo_org.key",
+                    "cert" : "./ssl/ipo_org.crt",
+                    "ca"   : "./ssl/CACert.crt"
+                }
+            }
+        } , 
+
+        {"public":"residegi.ipo.ir" , "local":"http://192.168.4.5:82" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo.ir.key.pem",
+                    "cert" : "./ssl/ipo.ir.cert.pem",
+                    "ca"   : ""
+                }
+            }
+        },
+
+        {"public":"pasokh.ipo.ir" , "local":"http://192.168.4.70:83" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo.ir.key.pem",
+                    "cert" : "./ssl/ipo.ir.cert.pem",
+                    "ca"   : ""
+                }
+            }
+        } , 
+
+        {"public":"pasokh.ipo.org" , "local":"http://192.168.4.70:83" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo_org.key",
+                    "cert" : "./ssl/ipo_org.crt",
+                    "ca"   : "./ssl/CACert.crt"
+                }
+            }
+        },
+        
+        {"public":"passage.ipo.org" , "local":"http://192.168.4.70:84" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo_org.key",
+                    "cert" : "./ssl/ipo_org.crt",
+                    "ca"   : "./ssl/CACert.crt"
+                }
+            }
+        },
+
+
+        
+        {"public":"eps.ipo.org" , "local":"http://192.168.4.70:85" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo_org.key",
+                    "cert" : "./ssl/ipo_org.crt",
+                    "ca"   : "./ssl/CACert.crt"
+                }
+            }
+        },
+
+        {"public":"eps.ipo.ir" , "local":"http://192.168.4.70:85" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo.ir.key.pem",
+                    "cert" : "./ssl/ipo.ir.cert.pem",
+                    "ca"   : ""
+                }
+            }
+        } , 
+
+
+
+        {"public":"dwt.ipo.org" , "local":"http://192.168.4.70:86" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo_org.key",
+                    "cert" : "./ssl/ipo_org.crt",
+                    "ca"   : "./ssl/CACert.crt"
+                }
+            }
+        } , 
+
+        {"public":"sso.ipo.ir" , "local":"http://192.168.4.70:88" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo.ir.key.pem",
+                    "cert" : "./ssl/ipo.ir.cert.pem",
+                    "ca"   : ""
+                }
+            }
+        } , 
+
+
+        {"public":"pgsb.ipo.org" , "local":"http://192.168.0.180" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo_org.key",
+                    "cert" : "./ssl/ipo_org.crt",
+                    "ca"   : "./ssl/CACert.crt"
+                }
+            }
+        } , 
+
+
+
+        {"public":"rfc.ipo.ir" , "local":"http://192.168.4.70:89" , 
+            "options" : {
+                "ssl": {
+                    "key"  : "./ssl/ipo.ir.key.pem",
+                    "cert" : "./ssl/ipo.ir.cert.pem",
+                    "ca"   : ""
+                }
+            }
+        } 
+        
+    ]
+}
+
+

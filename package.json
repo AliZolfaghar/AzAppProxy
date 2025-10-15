@@ -1,0 +1,38 @@
+{
+  "name": "azappproxy",
+  "version": "1.0.0",
+  "description": "A lightweight reverse proxy for hosting and routing multiple apps with dynamic control.",
+  "keywords": [
+    "#AZAppProxy",
+    "#NodeJS",
+    "#ReverseProxy",
+    "#DevOps",
+    "#RedbirdJS",
+    "#AliBuilt",
+    "#AppRouting",
+    "#MultiAppHosting"
+  ],
+  "homepage": "https://github.com/AliZolfaghar/AzAppProxy#readme",
+  "bugs": {
+    "url": "https://github.com/AliZolfaghar/AzAppProxy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AliZolfaghar/AzAppProxy.git"
+  },
+  "license": "ISC",
+  "author": "Ali Zolfaghar (azolfaghar@gmail.com)",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@jchip/redbird": "^1.4.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.2",
+    "lowdb": "^7.0.1",
+    "uuid": "^13.0.0"
+  }
+}
