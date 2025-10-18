@@ -4,7 +4,7 @@
     {
       "id": "2a2c5d10-c75d-4c2c-9ac5-7f27a38c02d4",
       "email": "azolfaghar@gmail.com",
-      "password": "$2b$10$LSCLZLqqKbimlcR8n1olheE5S3polVX2KWhxIQ0R2pEYS.E9w9YzW",
+      "password": "$2b$10$F9ipEQr014DO.rjSG6IM6u4RPHHSqmwjH2W.G/mdnuD6AwzEP5Lg2",
       "name": "Ali Zolfaghar"
     },
     {
@@ -29,6 +29,18 @@
         "ssl": {
           "key": "./ssl/cert.crt",
           "cert": "./ssl/cert.crt",
+          "ca": ""
+        }
+      }
+    },
+    {
+      "id": "02f89762-f9ec-4069-b8ea-18f5e7a77a9d",
+      "public": "test1.ipo.org",
+      "local": "http://127.0.0.1:8080",
+      "options": {
+        "ssl": {
+          "key": "./ssl/ipo_org.key",
+          "cert": "./ssl/ipo_org.crt",
           "ca": ""
         }
       }

@@ -1,1 +1,73 @@
-profile
+
+{{!-- show user name and user email in a card and show a form to change password --}}
+<div class="row">
+
+    <div class="col-md-6">
+        {{!-- show user count --}}
+        <div class="card shadow animated fadeIn faster">
+            <div class="card-header bg-primary text-white text-capitalize display-5 text-center">
+                user information
+            </div>
+            <div class="card-body display-5 ">
+                <div> 
+                    <i class="fa fa-user"></i>
+                    user name : 
+                    {{user.name}}
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    user email : 
+                    {{user.email}}
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {{!-- show proxy count --}}
+        <div class="card shadow animated fadeIn faster">
+            <div class="card-header bg-primary text-white text-capitalize display-5 text-center">
+                change password
+            </div>
+            <div class="card-body display-4">
+                <form action="/admin/profile/changePassword" method="post" class="ajaxForm">
+                    <div class="row">
+
+                        {{!--  old password  --}}
+                        <div class="col-md-12 mb-3">
+                            <label for="password">old password</label>
+                            <input type="password" class="form-control" name="currentPassword" id="password" placeholder="Password">
+                        </div>
+
+                        {{!--  new password  --}}
+                        <div class="col-md-12 mb-3">
+                            <label for="password">new password</label>
+                            <input type="password" class="form-control" name="newPassword" id="password" placeholder="Password">
+                        </div>
+
+                        {{!--  confirm password  --}}
+                        <div class="col-md-12 mb-3">
+                            <label for="password">confirm new password</label>
+                            <input type="password" class="form-control" name="confirmPassword" id="password" placeholder="Password">
+                        </div>
+                        {{#if message}}
+                        <div class="col-md-12">
+                            <div class="alert alert-success " style=" font-size: 1rem" role="alert">
+                                {{ message }}
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        {{!-- submit button --}}
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-block btn-primary btn-raised ripple" id="login">change password</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,21 +1,43 @@
-<h1>
+<div class="row">
 
-admin
+    <div class="col-md-4">
+        {{!-- show user count --}}
+        <div class="card shadow animated fadeIn faster">
+            <div class="card-header bg-primary text-white text-capitalize display-5 text-center">
+                total users
+            </div>
+            <div class="card-body display-4 text-center">
+                <i class="fa fa-users "></i>
+                {{users.length}}
+            </div>
+        </div>
+    </div>
 
-</h1>
+    <div class="col-md-4">
+        {{!-- show proxy count --}}
+        <div class="card shadow animated fadeIn faster">
+            <div class="card-header bg-success text-white text-capitalize display-5 text-center">
+                total proxies
+            </div>
+            <div class="card-body display-4 text-center">
+                <i class="fa fa-globe"></i>
+                {{proxies.length}}
+            </div>
+        </div>
+    </div>
 
-{{ secret }}
-<hr>
-{{ users.length }}
+    <div class="col-md-4">
+        {{!-- show ssl count --}}
+        <div class="card shadow animated fadeIn faster">
+            <div class="card-header bg-info text-white text-capitalize display-5 text-center">
+                total ssl files
+            </div>
+            <div class="card-body display-4 text-center">
+                <i class="fa fa-lock"></i>
+                {{sslFiles.length}}
+            </div>
+        </div>
+        
+    </div>
 
-{{!-- loop in users and show usernames --}}
-{{#each users}} 
-    <p> {{ this.name}} : {{this.email}} </p>
-{{/each}}
-
-
-<hr>
-
-{{#card title="test" class="bg-success"}}
-    test
-{{/card}}
+</div>

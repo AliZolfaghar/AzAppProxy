@@ -88,6 +88,11 @@ const loadApiRoutesAndStart = async () => {
 
 
     app.use((err, req, res, next) => {
+        console.log(err);
+        res.status(400).render('error', {
+            message: `${err.message}` , 
+            // referer : req.headers.referer
+        });
         
         // console.log('#############################');
         // console.log(err);
