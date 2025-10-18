@@ -1,35 +1,39 @@
-ssl manager
-
-list of ssl files in ./ssl folder
-{{json sslFiles}}
+{{!-- ssl manager --}}
+{{!-- list of ssl files in ./ssl folder --}}
+{{!-- {{json sslFiles}} --}}
 
 <div class="row">
     <div class="col-md-6 mb-3">
+
         <div class="card shadow ">
-            <div class="card-header display-5 bg-primary text-white text-capitalize">
+            <div class="card-header display-5 bg-primary text-white text-capitalize p-2 ">
                 available SSL cetificates
             </div>
             <div class="card-body">
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr class="bg-primary text-white">
-                            <td> file name </td>
-                            <td class="w-1"></td>
+
+
+
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr class="bg-primary text-white text-capitalize">
+                        <td> file name </td>
+                        <td class="w-1"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each sslFiles}}
+                        <tr>
+                            <td> {{this}} </td>
+                            <td>
+                                <a href="/admin/ssl/delete/{{this}}" class="btn btn-raised ripple btn-danger m-0 " onclick="return confirm('are you sure?')">
+                                    <i class="fa fa-regular fa-trash fa-1-5x"></i>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {{#each sslFiles}}
-                            <tr>
-                                <td> {{this}} </td>
-                                <td>
-                                    <a href="#/delete/{{this}}" class="btn btn-raised ripple btn-danger">
-                                       <i class="fa fa-regular  fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+                    {{/each}}
+                </tbody>
+            </table>
+
 
 
 
@@ -40,12 +44,36 @@ list of ssl files in ./ssl folder
 
     <div class="col-md-6 mb-3">
         <div class="card shadow ">
-            <div class="card-header display-5 bg-primary text-white text-capitilize">
+            <div class="card-header display-5 bg-primary text-white p-2 text-capitalize">
                 upload new SSL
             </div>
             <div class="card-body">
 
-            </div>
+                <form action="/admin/ssl/upload" method="post" enctype="multipart/form-data">
+                    <div class="row">
+
+                        <div class="col-md-12 mb-3">
+                            <label for="cert">Certificate File (cert.pem):</label>
+                            <input class="form-control" type="file" name="cert" id="cert"  />
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="key">Private Key File (key.pem):</label>
+                            <input class="form-control" type="file" name="key" id="key"  />
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="ca">CA Bundle File (ca.pem):</label>
+                            <input class="form-control" type="file" name="ca" id="ca"  />
+                        </div>
+
+                        <div class="col-md-6 mb-3">                        
+                            <button class="btn btn-block btn-raised ripple btn-success" type="submit">Upload cert Files</button>
+                        </div>
+
+                    </div>
+
+                </form>
         </div>
     </div>
 

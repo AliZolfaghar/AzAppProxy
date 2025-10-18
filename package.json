@@ -36,6 +36,7 @@
     "express-handlebars": "^8.0.2",
     "jsonwebtoken": "^9.0.2",
     "lowdb": "^7.0.1",
+    "multer": "^2.0.2",
     "node-cache": "^5.1.2",
     "uuid": "^13.0.0"
   }

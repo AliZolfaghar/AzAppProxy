@@ -1,0 +1,111 @@
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow animated fadeIn faster">
+            <div class="card-header text-white bg-primary display-5 p-2 text-capitalize">
+                Proxy List 
+            </div>
+            <div class="card-body">
+
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr class="bg-primary text-white text-capitalize">
+                            <td>public address</td>
+                            <td>proxy to </td>
+                            <td class="w-1"></td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each proxies}}
+                            <tr>
+                                <td>{{ this.public}}</td>
+                                <td>{{this.local}}</td>
+                                <td>
+                                    <a class="btn btn-raised ripple btn-danger m-0 " href="/admin/proxies/delete/{{this.id}}" onclick="return confirm('are you sure?')">
+                                        <i class="fa fa-regular fa-trash fa-1-5x"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card shadow animated fadeIn faster">
+            <div class="card-header text-white bg-primary display-5 p-2 text-capitalize">
+                Proxy List 
+            </div>
+            <div class="card-body">
+                <form action="/admin/proxies/add" method="post">
+                    <div class="row">
+                        
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" type="text" name="public" placeholder="public address" />
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" type="text" name="local" placeholder="local address" />
+                        </div>
+                        
+                        <div class="col-md-12 mb-3">
+                            {{!-- <input class="form-control" type="text" name="key" placeholder="key" /> --}}
+                            {{!-- create a dropdown instead of iput and fill fith sslFiles --}}
+                            <label>key : </label>
+                            <select class="form-control" name="key">
+                                {{#each sslFiles}}
+                                    <option> {{this}} </option>
+                                {{/each}}
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            {{!-- <input class="form-control" type="text" name="cert" placeholder="cert" /> --}}
+                            <label>cert : </label>
+                            <select class="form-control" name="cert">
+                                {{#each sslFiles}}
+                                    <option> {{this}} </option>
+                                {{/each}}
+                            </select>                            
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            {{!-- <input class="form-control" type="text" name="ca" placeholder="ca" /> --}}
+                            <label>ca : </label>
+                            <select class="form-control" name="ca">
+                                <option></option>
+                                {{#each sslFiles}}
+                                    <option> {{this}} </option>
+                                {{/each}}
+                            </select>                            
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-raised ripple btn-success" type="submit">add proxy</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+
+
+
+{{!-- 
+    create a form to get data from adding proxy 
+    public , local , key , cert , ca
+--}}
+    

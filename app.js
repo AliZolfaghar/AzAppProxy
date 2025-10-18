@@ -5,6 +5,9 @@ import { engine } from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import db from './db.js'; 
 import jwt from 'jsonwebtoken';
+import handlebarsHelpers from './lib/handlebarsHelpers.js';
+
+//  upload 
 
 const  app = express();
 app.use(express.json());
@@ -15,33 +18,11 @@ app.use(cookieParser());
 
 app.use(express.static("./www")); // server files in /www as static html files
 
+
 // setup handlebars 
 app.engine('handlebars', engine({    
     // defaultLayout: 'main' , 
-    helpers : {        
-        ifequal : ( a , b , options ) => {
-            if (a == b) {
-                return options.fn(this);  // Correct usage
-            } else {
-                return options.inverse(this);  // Handles the `{{else}}` block
-            }        
-        },
-        ifnotequal : ( a , b , options ) => {
-            if (a != b) {
-                return options.fn(this);  // Correct usage
-            } else {
-                return options.inverse(this);  // Handles the `{{else}}` block
-            }        
-        },
-        json : (obj) => {
-            try {            
-                return JSON.stringify(obj);
-            } catch (error) {
-                return error.message; 
-            }
-        },
-
-    }
+    helpers : handlebarsHelpers
 }));
 
 
@@ -104,6 +85,19 @@ const loadApiRoutesAndStart = async () => {
             app.use(route);
         }
     }    
+
+
+    app.use((err, req, res, next) => {
+        
+        // console.log('#############################');
+        // console.log(err);
+        // console.log('#############################');
+
+        // res.status(400).render('error', {
+        //     message: `${err.message}` , 
+        //     referer : req.headers.referer
+        // });
+    });
 
     // trap 404 errors
     app.use((req, res) => {

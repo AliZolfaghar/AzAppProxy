@@ -1,0 +1,40 @@
+{{!-- show beautifull error message  --}}
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow animated fadeIn rounded-top">
+                <div class="card-header display-5 bg-danger text-white text-capitalize p-2 text-center rounded-top">
+
+                    <div class="mt-3">
+                        {{!-- error icon --}}
+                        <i class="fa fa-exclamation-triangle fa-3x"></i>
+                    </div>
+                    <div>
+                        ERROR
+                    </div>
+                    <div >
+                        {{code}}
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="display-5">
+                        {{message}}
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <a class="btn btn-danger btn-block btn-raised ripple" href="{{link}}">Back to previous page</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{!-- <div class="alert alert-danger" role="alert">
+        {{message}}
+        {{link}}
+    </div> --}}
+</div>

@@ -161,7 +161,15 @@ table.selected-items thead tr th, table.selected-items tbody tr td {
 }
 
 
+.rounded-top {
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+}
 
+
+.fa-1-5x {
+    font-size: 1.3em !important;
+}
 
 
 

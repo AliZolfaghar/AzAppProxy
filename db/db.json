@@ -20,6 +20,19 @@
       "name": "1"
     }
   ],
-  "proxies": [],
+  "proxies": [
+    {
+      "id": "a4e95089-1ee0-4628-b9fa-6926dfb982b3",
+      "public": "test.ipo.org",
+      "local": "http://127.0.0.1:8080",
+      "options": {
+        "ssl": {
+          "key": "./ssl/cert.crt",
+          "cert": "./ssl/cert.crt",
+          "ca": ""
+        }
+      }
+    }
+  ],
   "jwt_secret": "c809706b4c4e43b12954ee212ff1c4d5e190f626"
 }
