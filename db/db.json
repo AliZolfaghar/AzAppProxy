@@ -22,21 +22,9 @@
   ],
   "proxies": [
     {
-      "id": "a4e95089-1ee0-4628-b9fa-6926dfb982b3",
+      "id": "f79b89b1-4753-4239-a0e6-faea7fa050c2",
       "public": "test.ipo.org",
-      "local": "http://127.0.0.1:8080",
-      "options": {
-        "ssl": {
-          "key": "./ssl/cert.crt",
-          "cert": "./ssl/cert.crt",
-          "ca": ""
-        }
-      }
-    },
-    {
-      "id": "02f89762-f9ec-4069-b8ea-18f5e7a77a9d",
-      "public": "test1.ipo.org",
-      "local": "http://127.0.0.1:8080",
+      "local": "http://192.168.0.100",
       "options": {
         "ssl": {
           "key": "./ssl/ipo_org.key",

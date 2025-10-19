@@ -1,0 +1,14 @@
+<h1>foo</h1>
+
+<form action="/foo" method="post">
+    <input type="text" name="email" placeholder="email" />    
+    <input type="submit" value="login" />
+</form>
+
+{{ error }}
+<hr>
+{{ message }}
+<hr>
+{{json flash_data }}
+<hr>
+{{json flash_data.data2.v.a}}

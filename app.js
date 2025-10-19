@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import db from './db.js'; 
 import jwt from 'jsonwebtoken';
 import handlebarsHelpers from './lib/handlebarsHelpers.js';
+import { getFlash } from './lib/flash.js';
 
 //  upload 
 
@@ -26,11 +27,13 @@ app.engine('handlebars', engine({
 }));
 
 
+app.use(getFlash);
 
 // set res.locals , 
 // res.locals objects will automatically pass to handlebars 
 // and accessable in handlebars with object names without res.locals ( ex : res.locals.currentUser => user )
 app.use((req, res, next) => {
+
     // check to is any user exists in database or not  
     const {users} = db.data ; 
     if(users.length == 0 && req.path !== '/setup'){ 
@@ -48,8 +51,9 @@ app.use((req, res, next) => {
         try{
             user = jwt.verify(loginToken , db.data.jwt_secret);
         }catch(e){
-            console.log(e);
+            // console.log(e);
         }
+
         // put user in res.locals 
         if(user){
             res.locals.currentUser = user; // put user in res.locals to check in routes (via checkLogin middleware)

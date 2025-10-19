@@ -19,7 +19,9 @@
                     <tbody>
                         {{#each proxies}}
                             <tr>
-                                <td>{{ this.public}}</td>
+                                <td>
+                                    <a href="https://{{this.public}}" target="_blank"> {{ this.public}} </a>
+                                </td>
                                 <td>{{this.local}}</td>
                                 <td>
                                     <a class="btn btn-raised ripple btn-danger m-0 " href="/admin/proxies/delete/{{this.id}}" onclick="return confirm('are you sure?')">
