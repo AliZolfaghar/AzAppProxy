@@ -25,6 +25,7 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                         </div>
+
                         {{#if error}}
                         <div class="col-md-12 mb-3">
                             <div class="alert alert-danger" role="alert">
@@ -32,13 +33,17 @@
                             </div>
                         </div>
                         {{/if}}
+
                         <div class="col-md-12 mb-3">
                             <button type="submit" class="btn btn-primary btn-raised ripple" id="login">Login</button>
                         </div>
 
-                    </div>
+                        <!-- Reset password link -->
+                        <div class="col-md-12 mb-3 text-end">
+                            <a href="/resetpassword">Forgot your password?</a>
+                        </div>
 
-                    
+    </div>
                 </div>
             </div>
         </div>

@@ -171,8 +171,9 @@ table.selected-items thead tr th, table.selected-items tbody tr td {
     font-size: 1.3em !important;
 }
 
-
-
+.bg-selected {
+  background-color: #4caf506b !important;
+}
 
 /*  apply on small screen size only */
 @media (max-width: 700px) {

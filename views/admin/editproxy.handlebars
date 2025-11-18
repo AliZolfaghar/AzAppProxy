@@ -1,4 +1,4 @@
-{{json proxy.options.ssl}}
+{{json proxy.options.ssl.key}}
 
 
 <div class="row">
@@ -22,17 +22,10 @@
 
                         <div class="col-md-12 mb-3">
                             <label>key : </label>
-
-                                {{#each sslFiles}} 
-                                    {{!-- {{this}}<br> --}}
-                                    {{json proxy}}
-                                {{/each}}
-
-
                             <select class="form-control" name="key">
                                 <option value="">NO KEY</option>
                                 {{#each sslFiles}} 
-                                    <option {{#if (eq this proxy.options.ssl.key)}}selected{{/if}}> {{this}} </option>
+                                    <option {{#if (matchFile this ...proxy.options.ssl.key)}}selected{{/if}}> {{this}} </option>
                                 {{/each}}
                             </select>
                         </div>
@@ -42,7 +35,7 @@
                             <select class="form-control" name="cert">
                                 <option value="">NO CERT</option>
                                 {{#each sslFiles}}
-                                    <option {{#if (eq this proxy.options.ssl.cert)}}selected{{/if}}> {{this}} </option>
+                                    <option {{#if (matchFile this ...proxy.options.ssl.cert)}}selected{{/if}}> {{this}} </option>
                                 {{/each}}
                             </select>
                         </div>
@@ -52,7 +45,7 @@
                             <select class="form-control" name="ca">
                                 <option value="">NO CA</option>
                                 {{#each sslFiles}}
-                                    <option {{#if (eq this proxy.options.ssl.ca)}}selected{{/if}}> {{this}} </option>
+                                    <option {{#if (matchFile this ...proxy.options.ssl.ca)}}selected{{/if}}> {{this}} </option>
                                 {{/each}}
                             </select>
                         </div>

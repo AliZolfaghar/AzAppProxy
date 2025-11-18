@@ -1,4 +1,5 @@
 
+{{!-- {{ key }} --}}
 <div class="row">
     <div class="col-md-6">
         <div class="card shadow animated fadeIn faster">
@@ -19,16 +20,19 @@
                     <tbody>
                         {{!-- {{json proxies}} --}}
                         {{#each proxies}}                        
-                            <tr>
+                            <tr {{#if (eq this.id ...id) }} class="bg-selected" {{/if}} >
                                 <td>
                                     <a href="{{this.public}}" target="_blank"> {{ this.public}} </a>
                                 </td>
                                 <td>{{this.local}}</td>
                                 <td class="text-nowrap">
-                                    <a title="Edit" class="btn btn-raised ripple btn-primary m-0 mr-2" href="/admin/proxies/edit/{{this.id}}">
+                                    <a title="Edit" class="btn btn-raised ripple btn-primary m-0 mr-2" 
+                                    href="/admin/proxies/{{this.id}}">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a title="Delete" class="btn btn-raised ripple btn-danger m-0" href="/admin/proxies/delete/{{this.id}}" onclick="return confirm('are you sure?')">
+                                    <a title="Delete" class="btn btn-raised ripple btn-danger m-0" 
+                                    href="/admin/proxies/delete/{{this.id}}" 
+                                        onclick="return confirm('are you sure?')">
                                         <i class="fa fa-regular fa-trash fa-1-5x"></i>
                                     </a>
                                 </td>
@@ -44,28 +48,33 @@
 
         <div class="card shadow animated fadeIn faster">
             <div class="card-header text-white bg-primary display-5 p-2 text-capitalize">
+                {{#if id }}
+                edit proxy
+                {{else}}
                 create new proxy
+                {{/if}}
             </div>
             <div class="card-body">
-                <form action="/admin/proxies/add" method="post">
+                <form action="" method="post">
                     <div class="row">
                         
                         <div class="col-md-12 mb-3">
-                            <input class="form-control" type="text" name="public" placeholder="public address" />
+                            <input class="form-control" type="text" name="public" placeholder="public address" value="{{public}}" />
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <input class="form-control" type="text" name="local" placeholder="local address" />
+                            <input class="form-control" type="text" name="local" placeholder="local address" value="{{local}}" />
                         </div>
                         
                         <div class="col-md-12 mb-3">
                             {{!-- <input class="form-control" type="text" name="key" placeholder="key" /> --}}
                             {{!-- create a dropdown instead of iput and fill fith sslFiles --}}
                             <label>key : </label>
+                                {{key}}
                             <select class="form-control" name="key">
                                     <option value="">NO KEY</option>
                                 {{#each sslFiles}}
-                                    <option> {{this}} </option>
+                                    <option {{#if (include this ...key) }} selected="selected" {{/if}}> {{this}} </option>
                                 {{/each}}
                             </select>
 
@@ -77,7 +86,7 @@
                             <select class="form-control" name="cert">
                                     <option value="">NO CERT</option>
                                 {{#each sslFiles}}
-                                    <option> {{this}} </option>
+                                    <option {{#if (include this ...cert) }} selected="selected" {{/if}}> {{this}} </option>
                                 {{/each}}
                             </select>                            
                         </div>
@@ -88,14 +97,25 @@
                             <select class="form-control" name="ca">
                                 <option value="">NO CA</option>
                                 {{#each sslFiles}}
-                                    <option> {{this}} </option>
+                                    <option {{#if (include this ...ca) }} selected="selected" {{/if}}> {{this}} </option>
                                 {{/each}}
                             </select>                            
                         </div>
                         
                         <div class="col-md-6">
-                            <button class="btn btn-block btn-raised ripple btn-success" type="submit">add proxy</button>
+                            <button class="btn btn-block btn-raised ripple btn-success" type="submit">
+                                {{#if id }}
+                                update proxy 
+                                {{else}}
+                                add proxy 
+                                {{/if}}
+                            </button>
                         </div>
+                        {{#if id }}
+                        <div class="col-md-6">
+                            <a href="/admin/proxies" class="btn btn-block btn-raised ripple btn-secondary">cancel</a>
+                        </div>                        
+                        {{/if}}
 
                     </div>
                 </form>
