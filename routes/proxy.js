@@ -53,7 +53,8 @@ router.get('/admin/proxies' , checkLogin , (req , res ) => {
 router.post('/admin/proxies/add' , checkLogin , async (req , res ) => {
     // get data from request
     // check for nessesary fields : public , local , key , cert
-    if(!req.body.public || !req.body.local || !req.body.key || !req.body.cert){
+    // if(!req.body.public || !req.body.local || !req.body.key || !req.body.cert){
+    if(!req.body.public || !req.body.local ){
         return res.render('error' , { message : 'please fill all fields : public , local , key , cert ' , link : '/admin/proxies'})
     }
 
@@ -84,17 +85,80 @@ router.post('/admin/proxies/add' , checkLogin , async (req , res ) => {
 
 
 
-// delete handler 
+// delete handler
 router.get('/admin/proxies/delete/:id' , checkLogin , (req , res ) => {
-    // find user by id 
+    // find user by id
     const { id } = req.params
     const { proxies } = db.data
     const proxy = proxies.find((proxy) => proxy.id == id)
     if(!proxy){
         return res.redirect('/admin/proxies')
     }
-    // remove user from database 
+    // remove user from database
     db.update(({ proxies }) => proxies.splice(proxies.indexOf(proxy) , 1))
+    restartProxy();
+    res.redirect('/admin/proxies');
+});
+
+// edit proxy GET
+router.get('/admin/proxies/edit/:id' , checkLogin , (req , res ) => {
+    const { id } = req.params
+    const { proxies } = db.data
+    const proxy = proxies.find((proxy) => proxy.id == id)
+
+    
+    if(!proxy){
+        return res.redirect('/admin/proxies')
+    }
+
+    // get ssl files
+    const sslDir = resolve('./ssl');
+    const sslExtensions = ['.key', '.crt', '.pem', '.pfx'];
+
+    try {
+        const files = readdirSync(sslDir);
+        const sslFiles = files.filter(file => sslExtensions.includes(extname(file)));
+        res.render('admin/editproxy' , { proxy , sslFiles })
+    } catch (err) {
+        console.error('Error reading SSL directory:', err);
+        res.render('admin/editproxy' , { proxy , sslFiles : [] , error : 'Error reading SSL directory' })
+    }
+});
+
+// edit proxy POST
+router.post('/admin/proxies/edit/:id' , checkLogin , async (req , res ) => {
+    const { id } = req.params
+    const { proxies } = db.data
+    const proxyIndex = proxies.findIndex((proxy) => proxy.id == id)
+    if(proxyIndex === -1){
+        return res.redirect('/admin/proxies')
+    }
+
+    if(!req.body.public || !req.body.local ){
+        return res.render('error' , { message : 'please fill all fields : public , local' , link : '/admin/proxies'})
+    }
+
+    // if public is exists in proxies and not the same proxy, return error
+    const existingProxy = proxies.find( proxy => proxy.public === req.body.public && proxy.id !== id);
+    if(existingProxy){
+        return res.render('error' , { message : 'proxy already exists' , link : '/admin/proxies'})
+    }
+
+    // update proxy
+    proxies[proxyIndex] = {
+        ...proxies[proxyIndex],
+        "public":req.body.public ,
+        "local":req.body.local ,
+        "options" : {
+            "ssl": {
+                "key"  : req.body.key ? `./ssl/${req.body.key}` : '',
+                "cert" : req.body.cert ? `./ssl/${req.body.cert}` : '',
+                "ca"   : req.body.ca ? `./ssl/${req.body.ca}` : ''
+            }
+        }
+    };
+
+    await db.write();
     restartProxy();
     res.redirect('/admin/proxies');
 });

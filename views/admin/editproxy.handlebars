@@ -1,0 +1,73 @@
+{{json proxy.options.ssl}}
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="card shadow animated fadeIn faster">
+            <div class="card-header text-white bg-primary display-5 p-2 text-capitalize">
+                Edit Proxy
+            </div>
+            <div class="card-body">
+                <form action="/admin/proxies/edit/{{proxy.id}}" method="post">
+                    <div class="row">
+
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" type="text" name="public" placeholder="public address" value="{{proxy.public}}" required />
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" type="text" name="local" placeholder="local address" value="{{proxy.local}}" required />
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>key : </label>
+
+                                {{#each sslFiles}} 
+                                    {{!-- {{this}}<br> --}}
+                                    {{json proxy}}
+                                {{/each}}
+
+
+                            <select class="form-control" name="key">
+                                <option value="">NO KEY</option>
+                                {{#each sslFiles}} 
+                                    <option {{#if (eq this proxy.options.ssl.key)}}selected{{/if}}> {{this}} </option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>cert : </label>
+                            <select class="form-control" name="cert">
+                                <option value="">NO CERT</option>
+                                {{#each sslFiles}}
+                                    <option {{#if (eq this proxy.options.ssl.cert)}}selected{{/if}}> {{this}} </option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>ca : </label>
+                            <select class="form-control" name="ca">
+                                <option value="">NO CA</option>
+                                {{#each sslFiles}}
+                                    <option {{#if (eq this proxy.options.ssl.ca)}}selected{{/if}}> {{this}} </option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-raised ripple btn-success" type="submit">Update Proxy</button>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="/admin/proxies" class="btn btn-block btn-raised ripple btn-secondary">Cancel</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

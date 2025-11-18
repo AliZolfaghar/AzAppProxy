@@ -23,13 +23,13 @@
   "proxies": [
     {
       "id": "f79b89b1-4753-4239-a0e6-faea7fa050c2",
-      "public": "test.ipo.org",
+      "public": "https://test.ipo.org",
       "local": "http://192.168.0.100",
       "options": {
         "ssl": {
-          "key": "./ssl/ipo_org.key",
-          "cert": "./ssl/ipo_org.crt",
-          "ca": ""
+          "key": "./ssl/CACert.crt",
+          "cert": "./ssl/CACert.crt",
+          "ca": "./ssl/CACert.crt"
         }
       }
     }

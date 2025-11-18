@@ -17,14 +17,18 @@
                     </thead>
 
                     <tbody>
-                        {{#each proxies}}
+                        {{!-- {{json proxies}} --}}
+                        {{#each proxies}}                        
                             <tr>
                                 <td>
-                                    <a href="https://{{this.public}}" target="_blank"> {{ this.public}} </a>
+                                    <a href="{{this.public}}" target="_blank"> {{ this.public}} </a>
                                 </td>
                                 <td>{{this.local}}</td>
-                                <td>
-                                    <a class="btn btn-raised ripple btn-danger m-0 " href="/admin/proxies/delete/{{this.id}}" onclick="return confirm('are you sure?')">
+                                <td class="text-nowrap">
+                                    <a title="Edit" class="btn btn-raised ripple btn-primary m-0 mr-2" href="/admin/proxies/edit/{{this.id}}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a title="Delete" class="btn btn-raised ripple btn-danger m-0" href="/admin/proxies/delete/{{this.id}}" onclick="return confirm('are you sure?')">
                                         <i class="fa fa-regular fa-trash fa-1-5x"></i>
                                     </a>
                                 </td>
@@ -59,6 +63,7 @@
                             {{!-- create a dropdown instead of iput and fill fith sslFiles --}}
                             <label>key : </label>
                             <select class="form-control" name="key">
+                                    <option value="">NO KEY</option>
                                 {{#each sslFiles}}
                                     <option> {{this}} </option>
                                 {{/each}}
@@ -70,6 +75,7 @@
                             {{!-- <input class="form-control" type="text" name="cert" placeholder="cert" /> --}}
                             <label>cert : </label>
                             <select class="form-control" name="cert">
+                                    <option value="">NO CERT</option>
                                 {{#each sslFiles}}
                                     <option> {{this}} </option>
                                 {{/each}}
@@ -80,7 +86,7 @@
                             {{!-- <input class="form-control" type="text" name="ca" placeholder="ca" /> --}}
                             <label>ca : </label>
                             <select class="form-control" name="ca">
-                                <option></option>
+                                <option value="">NO CA</option>
                                 {{#each sslFiles}}
                                     <option> {{this}} </option>
                                 {{/each}}
