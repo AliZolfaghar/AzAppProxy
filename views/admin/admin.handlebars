@@ -43,4 +43,25 @@
 </div>
 
 
-{{json list}}
+<table class="table">
+    <thead>
+        <tr>
+            <td>pid</td>
+            <td>name</td>
+            <td>pm_id</td>
+            <td>memory</td>
+            <td>cpu</td>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+                <tr>
+                    <td> {{this.pid}} </td>
+                    <td> {{this.name}} </td>
+                    <td> {{this.pm_id}} </td>
+                    <td> {{this.monit.memory}} </td>
+                    <td> {{this.monit.cpu}} </td>
+                </tr>
+        {{/each}}
+    </tbody>
+</table>
