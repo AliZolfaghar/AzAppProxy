@@ -6,8 +6,9 @@ import crypto from 'crypto';
 import checkLogin  from "../lib/checkLogin.js";
 import { resolve , extname} from "path";
 import { readdirSync } from "fs";
+import getPm2ListViaCLI from "../lib/getPm2Process.js";
 
-router.get('/admin' , checkLogin , (req , res ) => {
+router.get('/admin' , checkLogin , async ( req , res ) => {
     // get users 
     const { users } = db.data
 
@@ -21,7 +22,15 @@ router.get('/admin' , checkLogin , (req , res ) => {
     const sslFiles = files.filter(file => sslExtensions.includes(extname(file)));
         
 
-    res.render('admin/admin' , { users , proxies , sslFiles})
+
+    let list = [];
+    try {
+        list = await getPm2ListViaCLI();
+    } catch (error) {
+        console.log( 'lalala' , error.message);
+    }
+
+    res.render('admin/admin' , { users , proxies , sslFiles , list });
 })
 
 export default router;

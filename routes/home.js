@@ -3,8 +3,10 @@ const router = Router();
 import db from "../db.js";
 import checkLogin from "../lib/checkLogin.js";
 
-router.get('/' , checkLogin , (req , res ) => {
-    res.redirect('/admin')
+import getPm2ListViaCLI from "../lib/getPm2Process.js";
+
+router.get('/' , checkLogin , async ( req , res ) => {
+    res.redirect('/admin');
 })
 
 export default router;
