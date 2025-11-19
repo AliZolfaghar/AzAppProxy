@@ -6,7 +6,7 @@ import crypto from 'crypto';
 import checkLogin  from "../lib/checkLogin.js";
 import { resolve , extname} from "path";
 import { readdirSync } from "fs";
-import getPm2ListViaCLI from "../lib/getPm2Process.js";
+import getPm2ListViaCLI from "../lib/pm2Process.js";
 
 router.get('/admin' , checkLogin , async ( req , res ) => {
     // get users 
