@@ -7,6 +7,7 @@ import checkLogin  from "../lib/checkLogin.js";
 import { resolve , extname} from "path";
 import { readdirSync } from "fs";
 import getPm2ListViaCLI from "../lib/pm2Process.js";
+import { restartByPm2ID } from "../lib/pm2Process.js";
 
 router.get('/admin' , checkLogin , async ( req , res ) => {
     // get users 
@@ -31,6 +32,13 @@ router.get('/admin' , checkLogin , async ( req , res ) => {
     }
 
     res.render('admin/admin' , { users , proxies , sslFiles , list });
+})
+
+
+router.get('admin/restartprocess/:pm2id' , async ( req , res ) => {
+    const { pm2id } = req.params
+    await restartByPm2ID(pm2id);
+    res.redirect('/admin');
 })
 
 export default router;
