@@ -1,35 +1,63 @@
-
-{{!-- create a form for email settings , gmail settings : user , app password --}}
+{{! create a form for email settings , gmail settings : user , app password }}
 <div class="row">
-    <div class="col-md-6">
-        <div class="card">
-        <div class="card-header bg-primary text-white display-5">
-            Gmail settings
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="{{ email }}">
-                </div>
-                <div class="col-md-12 mb-3">
-                    <label for="password">App Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-primary text-white display-5">
+        Gmail settings
+      </div>
+        <form method="post" action="/admin/settings">
+            <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                      <label for="email">Email</label>
+                      <input
+                      type="text"
+                      class="form-control"
+                      name="email"
+                      id="email"
+                      placeholder="Email"
+                      value="{{email}}"
+                      />
+                  </div>
+                  <div class="col-md-12 mb-3">
+                      <label for="password">App Password</label>
+                      <input
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      id="password"
+                      placeholder="Password"
+                      value="{{password}}"
+                      />
+                  </div>
+                  
+                    {{!--  show message  --}}
+                    {{#if message}}
+                    <div class="col-md-12">
+                        <div class="alert alert-success " style=" font-size: 1rem" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                    {{/if}}
+                  
                 </div>
             </div>
-        </div>
-        <div class="card-footer">
-            <div class="row">
+            <div class="card-footer">
+                <div class="row">
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-block btn-primary btn-raised ripple" id="login">Save</button>             
-                </div>
+                    <button
+                    type="submit"
+                    class="btn btn-block btn-primary btn-raised ripple"
+                    id="login"
+                    >Save</button>
+                </div>                
                 <div class="col-md-6">
-                    
+                    <a class="btn btn-block btn-raised ripple btn-secondary" href="/admin/settings/testemail">Test Email</a>
                 </div>
-            </div>
+                </div>
 
-        </div>
-            
-        </div>
+            </div>
+        </form>
     </div>
+  </div>
 </div>

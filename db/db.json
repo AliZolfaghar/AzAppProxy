@@ -46,5 +46,9 @@
       }
     }
   ],
-  "jwt_secret": "c809706b4c4e43b12954ee212ff1c4d5e190f626"
+  "jwt_secret": "c809706b4c4e43b12954ee212ff1c4d5e190f626",
+  "settings": {
+    "email": "azolfaghar@gmail.com",
+    "password": "123"
+  }
 }

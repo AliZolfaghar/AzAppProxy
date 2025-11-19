@@ -1,0 +1,61 @@
+{{!--  create a form to send test email the recipient and subject and message , after send success or erro message will show --}}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+
+        <div class="card">
+            <div class="card-header bg-primary text-white display-5 text-capitalize">
+                test email config
+            </div>
+
+            <div class="card-body">
+        <form method="post" action="/admin/settings/testemail">
+
+            <div class="mb-3">
+                <label for="emailTo">Send Email To </label>
+                <input type="text" class="form-control" name="emailTo" id="emailTo" placeholder="Email To" value="{{ emailTo }}" >
+                </label>
+            </div>
+
+            <div class="mb-3">
+                <label for="emailTo">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subkect" value="{{ subject }}" >
+                </label>
+            </div>
+
+            <div class="mb-3">
+                <label for="messageBody">Message</label>
+                <textarea type="text" class="form-control" name="messageBody" id="messageBody" placeholder="Message" >{{ messageBody }}</textarea>
+                </label>
+            </div>
+
+            <div class="display-5 mb-3 mt-3">
+            {{#if message}}
+                <div class="alert alert-success">
+                    {{message}}                        
+                </div>
+            {{/if}}
+            {{#if error}}
+                <div class="alert alert-danger">
+                    {{error}}                        
+                </div>
+            {{/if}}
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-raised ripple" id="resetpassword">Send Test Email</button>
+                </div>
+
+                <div class=" col-md-6 ">
+                    <a href="/admin/settings" class="btn btn-secondary btn-block btn-raised ripple">Back</a>
+                </div>
+                
+            </div>
+        </form>
+                 
+            </div>
+        </div>
+
+    </div>
+</div>
