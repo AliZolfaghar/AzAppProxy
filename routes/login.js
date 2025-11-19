@@ -41,7 +41,7 @@ router.post('/login' , (req , res ) => {
 
     // create a jwt token and save in cookies 
     let token = jwt.sign({ email , name : user.name } , db.data.jwt_secret , { expiresIn : '1h' })
-    res.cookie('loginToken' , token);
+    res.cookie('loginToken' , token , { expires : new Date(Date.now() + 3600000) });
 
     // save token in node-cache 
     tokenCache.set(email , token);

@@ -8,7 +8,7 @@ import sendEmail from "../lib/sendEmail.js";
 router.get('/admin/settings' , checkLogin , ( req , res ) => {
     // get settings from database
     const { settings } = db.data
-    res.render('settings' , { email : settings.email , password : settings.password });
+    res.render('admin/settings' , { email : settings?.email , password : settings?.password });
 })
 
 
@@ -30,7 +30,7 @@ router.post('/admin/settings' , checkLogin,  ( req , res ) => {
         settings.password = password;
     }
     db.write();
-    res.render('settings' , { email : settings.email , password : settings.password  , message : 'Settings updated successfully' });
+    res.render('admin/settings' , { email : settings.email , password : settings.password  , message : 'Settings updated successfully' });
     // res.redirect('/admin/settings' , { settings  , message : 'Settings updated successfully' });
 })
 
@@ -38,7 +38,15 @@ router.post('/admin/settings' , checkLogin,  ( req , res ) => {
 
 
 router.get('/admin/settings/testemail' , checkLogin , ( req , res ) => {
-    res.render('testmail' , { emailTo : '' , subject : 'Test Email' , messageBody : 'This is a test Email' });
+    // get email and password from db 
+    const { settings } = db.data
+    if(settings){
+        res.render('admin/testmail' , { emailTo : settings.email , subject : 'Test Email' , messageBody : 'This is a test Email' });
+    }else{
+        res.render('admin/testmail' , { hideButton : true , emailTo : '' , subject : 'Test Email' , messageBody : 'This is a test Email' , error:'email settings not found' });
+    }
+
+    // res.render('admin/testmail' , { emailTo : '' , subject : 'Test Email' , messageBody : 'This is a test Email' });
 })
 
 // pos route to test email 
@@ -51,11 +59,11 @@ router.post('/admin/settings/testemail' , checkLogin , async ( req , res ) => {
     try {        
         await sendEmail( emailTo , subject , messageBody);
         // render with success message
-        res.render('testmail' , { emailTo , subject , messageBody , message : 'Email sent successfully' });
+        res.render('admin/testmail' , { emailTo , subject , messageBody , message : 'Email sent successfully' });
     } catch (error) {
         // render with error 
         console.log(error)
-        res.render('testmail' , { emailTo ,subject , messageBody , error : error.message });
+        res.render('admin/testmail' , { emailTo ,subject , messageBody , error : error.message });
     }
 })
 
