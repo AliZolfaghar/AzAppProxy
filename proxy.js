@@ -9,12 +9,12 @@ const proxy = new Redbird({
     port: 80 , 
     xfwd : true ,  // pass client ip address 
     cluster : 1 ,  // cluster proxy on 1 cpu core 
-    // ssl:{
-        // port : 443 , 
+    ssl:{
+        port : 443 , 
         // "key"  : "./ssl/ipo.org.key.pem",
         // "cert" : "./ssl/ipo.org.cert.pem",
         // "ca"   : "./ssl/RootCA.crt"
-    // },
+    },
     // bunyan : { level : 'error'} , 
     
 }); 
