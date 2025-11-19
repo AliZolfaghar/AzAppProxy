@@ -15,7 +15,7 @@ const proxy = new Redbird({
         // "cert" : "./ssl/ipo.org.cert.pem",
         // "ca"   : "./ssl/RootCA.crt"
     },
-    // bunyan : { level : 'error'} , 
+    bunyan : { level : 'error'} , 
     
 }); 
 
