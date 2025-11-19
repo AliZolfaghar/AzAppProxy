@@ -37,8 +37,8 @@ router.get('/admin' , checkLogin , async ( req , res ) => {
 
 router.get('/admin/restartprocess/:pm2id' , async ( req , res ) => {
     const { pm2id } = req.params
-    await restartByPm2ID(pm2id);
     res.redirect('/admin');
+    await restartByPm2ID(pm2id);
 })
 
 export default router;
