@@ -67,7 +67,7 @@ app.use((req, res, next) => {
     
     res.locals.path = req.originalUrl;
     res.locals.test = 'this is a test value in res.locals '; // 
-    res.locals.version = 1// config.VERSION;        
+    res.locals.version = '1.0.0' // config.VERSION;
     
     next();
 });

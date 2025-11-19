@@ -7,9 +7,9 @@
 
 <form id="loginForm" method="POST" action="/login">
     <div class="row justify-content-center">
-        <div class="col-sm-7 col-md-6 col-lg-5 col-xl-4">
+        <div class="col-sm-8 col-md-7 col-lg-6 col-xl-5">
             <div class="card animated fadeIn faster">
-                <div class="card-header bg-primary text-white display-5">
+                <div class="card-header bg-primary text-white display-5 text-center">
                     Login
                 </div>
                 <div class="card-body">
@@ -34,13 +34,13 @@
                         </div>
                         {{/if}}
 
-                        <div class="col-md-12 mb-3">
-                            <button type="submit" class="btn btn-primary btn-raised ripple" id="login">Login</button>
+                        <div class="col-md-6 mb-3">
+                            <button type="submit" class="btn btn-block btn-primary btn-raised ripple" id="login">Login</button>
                         </div>
 
                         <!-- Reset password link -->
-                        <div class="col-md-12 mb-3 text-end">
-                            <a href="/resetpassword">Forgot your password?</a>
+                        <div class="col-md-6 mb-3 text-end">
+                            <a class="btn btn-block btn-secondary btn-raised ripple" href="/resetpassword">reset password</a>
                         </div>
 
     </div>
