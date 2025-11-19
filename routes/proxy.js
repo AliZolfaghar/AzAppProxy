@@ -6,7 +6,7 @@ import { extname, resolve } from 'path';
 import { readdirSync } from "fs";
 import fs from 'fs';
 import { v4 as uuid } from 'uuid';
-import { restartProxy } from "../proxy.js";
+// import { restartProxy } from "../proxy.js";
 
 const add = async () => {
     const sample = {
@@ -70,7 +70,7 @@ const insertProxy = async ( req , res ) => {
     // save to database 
     db.data.proxies.push(proxy);
     await db.write();
-    restartProxy();
+    // restartProxy();
     res.redirect('/admin/proxies');
 };
 
@@ -93,7 +93,7 @@ const updateProxy = async ( req , res ) => {
     const index = proxies.findIndex( proxy => proxy.id === req.params.id);
     proxies[index] = proxy;
     await db.write();
-    restartProxy();
+    // restartProxy();
     res.redirect('/admin/proxies');    
 };
 
@@ -108,7 +108,7 @@ const deleteProxy = async ( req , res ) => {
     }
     // remove user from database
     db.update(({ proxies }) => proxies.splice(proxies.indexOf(proxy) , 1))
-    restartProxy();
+    // restartProxy();
     res.redirect('/admin/proxies');
 };
 
