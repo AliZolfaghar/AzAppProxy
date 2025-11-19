@@ -7,6 +7,10 @@ yarn-error.log*
 lerna-debug.log*
 db/*
 db/db.json
+ssl/
+ssl/*
+./ssl
+./ssl/*
 
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
