@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="card shadow animated fadeIn faster">
-            <div class="card-header text-white bg-primary display-5 p-2 text-capitalize">
+            <div class="card-header text-white bg-primary display-5 p-2 text-capitalize text-center">
                 Proxy List 
             </div>
             <div class="card-body">
@@ -28,7 +28,7 @@
                                 <td class="text-nowrap">
                                     <a title="Edit" class="btn btn-raised ripple btn-primary m-0 mr-2" 
                                     href="/admin/proxies/{{this.id}}">
-                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-regular fa-edit fa-1-5x"></i>
                                     </a>
                                     <a title="Delete" class="btn btn-raised ripple btn-danger m-0" 
                                     href="/admin/proxies/delete/{{this.id}}" 
@@ -47,7 +47,7 @@
     <div class="col-md-6">
 
         <div class="card shadow animated fadeIn faster">
-            <div class="card-header text-white bg-primary display-5 p-2 text-capitalize">
+            <div class="card-header text-white bg-primary display-5 p-2 text-capitalize text-center">
                 {{#if id }}
                 edit proxy
                 {{else}}
