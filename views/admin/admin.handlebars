@@ -43,9 +43,9 @@
 </div>
 
 
-<table class="table">
+<table class="table table-bordered table-hover table-striped shadow mt-3">
     <thead>
-        <tr>
+        <tr class="bg-primary display-5 text-white">
             <td>pid</td>
             <td>name</td>
             <td>pm_id</td>
@@ -62,8 +62,14 @@
                     <td> {{this.pm_id}} </td>
                     <td> {{this.monit.memory}} </td>
                     <td> {{this.monit.cpu}} </td>
-                    <td>
-                        <a href="/admin/restartprocess/{{this.pm_id}}" class="btn btn-block btn-danger btn-raised ripple">restart</a>
+                    <td class="w-1">
+                        <a 
+                            x-data="{ isLoading:false }" 
+                            x-on:click="isLoading = true"
+                            href="/admin/restartprocess/{{this.pm_id}}" class="btn btn-block btn-danger btn-raised ripple">
+                            restart
+                            <i x-show="isLoading" class="fa fa-spinner fa-spin"></i>
+                        </a>
                     </td>
                 </tr>
         {{/each}}

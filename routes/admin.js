@@ -22,13 +22,15 @@ router.get('/admin' , checkLogin , async ( req , res ) => {
     const files =  readdirSync(sslDir);
     const sslFiles = files.filter(file => sslExtensions.includes(extname(file)));
         
-
-
-    let list = [];
+    // get a list of pm2 services 
+    let list = [{ name : '1' } , { name : '2' }];
     try {
-        list = await getPm2ListViaCLI();
+        const data = await getPm2ListViaCLI();
+        if(data.length > 0){
+            list = data;
+        }
     } catch (error) {
-        console.log( 'lalala' , error.message);
+        console.log( 'error' , error.message);
     }
 
     res.render('admin/admin' , { users , proxies , sslFiles , list });
